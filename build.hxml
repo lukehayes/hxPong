@@ -7,3 +7,4 @@
 -D no-deprecation-warnings
 -D windowSize=800x600
 -D debug
+-D showCollisions
