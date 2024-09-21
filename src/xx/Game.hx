@@ -10,12 +10,11 @@ class Game extends hxd.App
     public var gfx : h2d.Graphics;
     public var txt : h2d.Text;
 
-    public var entities: Array<Entity>;
+    public static var entities = new Array<Entity>();
 
     override function init() 
     {
         this.gfx = new h2d.Graphics(s2d);
-        this.entities = new Array<Entity>();
 
         // --------------------------------------------------------------------
         // UI TEXT
@@ -25,19 +24,16 @@ class Game extends hxd.App
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
 
-        this.entities.push(new Ball(
-            new Vec2(200,200)
-        ));
+        
+        for(i in 0...100)
+        {
+            var rx = Std.random(500);
+            var ry = Std.random(500);
 
-        this.entities.push(new Ball(
-            new Vec2(300,100)
-        ));
-
-        this.entities.push(new Ball(
-            new Vec2(430,400)
-        ));
-
-
+            xx.Global.entities.push(
+                new Ball(new Vec2(rx,ry))
+            );
+        }
     }
 
     override function update(dt:Float) 
@@ -46,8 +42,7 @@ class Game extends hxd.App
             this.showFPS();
         #end
 
-
-        for(e in this.entities)
+        for(e in Global.entities)
         {
             e.update(dt);
         }
@@ -57,7 +52,7 @@ class Game extends hxd.App
     {
         this.gfx.clear();
 
-        for(e in this.entities)
+        for(e in Global.entities)
         {
             e.draw(this.gfx);
         }
