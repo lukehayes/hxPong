@@ -1,0 +1,14 @@
+{
+  "name": "XXHX",
+  "url" : "https://github.com/lukehayes/XXHX/",
+  "license": "MIT",
+  "tags": ["Engine", "Game Engine", "Haxe"],
+  "description": "A simple game engine written with Haxe",
+  "version": "0.0.1-alpha",
+  "classPath": "src/",
+  "releasenote": "Alpha State",
+  "contributors": ["LDH"],
+  "dependencies": {
+    "random": ""
+  }
+}
