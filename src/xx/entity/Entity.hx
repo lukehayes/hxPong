@@ -7,7 +7,7 @@ class Entity
 {
     public var position : Vec2;
     public var scale    : Vec2;
-    public var color    = 0xFF00FF;
+    public var color    = 0xFFFFFF;
     public var dx       : Int;
     public var dy       : Int;
     public var speed    : Int;
