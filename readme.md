@@ -1,5 +1,5 @@
-# XXHx
-A tiny game engine written with Haxe/Heaps.
+# hxPong
+Haxe Heaps Pong
 
 ## Overview
 
