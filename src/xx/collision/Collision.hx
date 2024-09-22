@@ -1,10 +1,26 @@
 package xx.collision;
 
-import xx.Global;
+import h2d.col.Bounds;
 
-class Collision extends h2d.col.Bounds
+class Collision extends Bounds
 {
-    public function new(x: Int, y: Int, w :Int = Global.TILESIZE, h :Int = Global.TILESIZE)
+
+    private var bounds : Bounds;
+
+    public function new(x: Float, y: Float, w :Float = 16, h :Float = 16)
     {
+        super();
+
+        this.bounds = Bounds.fromValues(x,y,w,h);
+    }
+
+    public function getCollision() : Bounds
+    {
+        return this.bounds;
+    }
+
+    override public function toString() : String
+    {
+        return "Collision Bounds";
     }
 }
