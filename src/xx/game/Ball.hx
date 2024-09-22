@@ -24,6 +24,7 @@ class Ball extends Entity
         for(e in xx.Global.entities)
         {
             var ee = cast(e, Ball);
+            if(ee == this) return;
             if (this.collision.intersects(ee.collision)) {
                 this.color = 0x00FF00;
                 this.scale.x = 40;
