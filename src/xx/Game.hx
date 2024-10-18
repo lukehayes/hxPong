@@ -9,6 +9,7 @@ class Game extends hxd.App
 {
     public var gfx : h2d.Graphics;
     public var txt : h2d.Text;
+    public var entityCount = 10;
 
     public static var entities = new Array<Entity>();
 
@@ -24,16 +25,12 @@ class Game extends hxd.App
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
 
-        
-        for(i in 0...100)
-        {
-            var rx = Std.random(500);
-            var ry = Std.random(500);
-
-            xx.Global.entities.push(
-                new Ball(new Vec2(rx,ry))
-            );
-        }
+        xx.Global.entities.push(
+            new Entity(
+                new Vec2(200,200), 
+                new Vec2(10,10), 
+                this)
+        );
     }
 
     override function update(dt:Float) 

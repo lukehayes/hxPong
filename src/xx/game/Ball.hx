@@ -10,7 +10,7 @@ class Ball extends Entity
 
     public function new(pos)
     {
-        super(pos, new Vec2(16,16));
+        super(pos, new Vec2(16,16), new hxd.App());
         this.collision = Bounds.fromValues(pos.x,pos.y,16,16);
     }
 
@@ -21,18 +21,6 @@ class Ball extends Entity
         this.collision.x = this.position.x;
         this.collision.y = this.position.y;
 
-        for(e in xx.Global.entities)
-        {
-            var ee = cast(e, Ball);
-            if(ee == this) return;
-            if (this.collision.intersects(ee.collision)) {
-                this.color = 0x00FF00;
-                this.scale.x = 40;
-                this.scale.y = 40;
-            }else {
-                this.color = 0xFFFF00;
-            }
-        }
     }
 
     override public function draw(g: h2d.Graphics)

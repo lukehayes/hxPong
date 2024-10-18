@@ -12,8 +12,9 @@ class Entity
     public var dy       : Int;
     public var speed    : Int;
     public var tile     : h2d.Tile;
+    public var app      : hxd.App;
 
-    public function new(pos: Vec2, scale: Vec2)
+    public function new(pos: Vec2, scale: Vec2, app: hxd.App)
     {
         var dirs = [-1,1];
 
@@ -24,6 +25,8 @@ class Entity
 
         this.dx = dirs[Random.int(0,1)];
         this.dy = dirs[Random.int(0,1)];
+
+        this.app = app;
     }
 
     public function update(dt:Float)
@@ -34,19 +37,20 @@ class Entity
 
         // position.x = this.position.x + Math.cos(c) * 10;
 
-        if(this.position.x <=10 || this.position.x >= 750)
+        if(this.position.x <=10 || this.position.x >= app.engine.width - 100)
         {
             this.dx = -this.dx;
         }
 
-        if(this.position.y <=10 || this.position.y >= 570)
+        if(this.position.y <=10 || this.position.y >= app.engine.height - 100)
         {
             this.dy = -this.dy;
         }
 
+        trace(app.engine.height);
+
         position.x += this.dx * this.speed * dt;
         position.y += this.dx * this.speed * dt;
-        
     }
 
     public function draw(gfx: h2d.Graphics)
@@ -60,7 +64,6 @@ class Entity
             );
         gfx.endFill();
     }
-
 }
 
 
