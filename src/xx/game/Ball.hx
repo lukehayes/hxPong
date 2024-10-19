@@ -8,9 +8,9 @@ class Ball extends Entity
 {
     public var collision : Bounds;
 
-    public function new(pos)
+    public function new(pos: Vec2, scale: Vec2, app: hxd.App)
     {
-        super(pos, new Vec2(16,16), new hxd.App());
+        super(pos, scale, app);
         this.collision = Bounds.fromValues(pos.x,pos.y,16,16);
     }
 
