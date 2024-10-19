@@ -1,6 +1,7 @@
 package xx;
 
 import xx.game.Ball;
+import xx.game.Paddle;
 import xx.entity.Entity;
 
 import xx.math.Vec2;
@@ -26,9 +27,17 @@ class Game extends hxd.App
         s2d.addChild(this.txt);
 
         xx.Global.entities.push(
-            new Entity(
-                new Vec2(200,200), 
-                new Vec2(10,10), 
+            new Ball(
+                new Vec2(200,200),
+                new Vec2(10,10),
+                this)
+        );
+
+        xx.Global.entities.push(
+            new Paddle(
+                new Vec2(200,200),
+                new Vec2(10,10),
+                s2d,
                 this)
         );
     }
@@ -41,6 +50,7 @@ class Game extends hxd.App
 
         for(e in Global.entities)
         {
+            trace(e.collision);
             e.update(dt);
         }
     }
