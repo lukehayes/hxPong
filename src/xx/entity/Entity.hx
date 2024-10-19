@@ -32,25 +32,19 @@ class Entity
     public function update(dt:Float)
     {
         // TODO Movement should be velocity based.
-        static var c = 0.0;
-        c += 0.1;
 
-        // position.x = this.position.x + Math.cos(c) * 10;
-
-        if(this.position.x <=10 || this.position.x >= app.engine.width - 100)
+        if(this.position.x <=10 || this.position.x >= app.engine.width - 10)
         {
             this.dx = -this.dx;
         }
 
-        if(this.position.y <=10 || this.position.y >= app.engine.height - 100)
+        if(this.position.y <=10 || this.position.y >= app.engine.height - 10)
         {
             this.dy = -this.dy;
         }
 
-        trace(app.engine.height);
-
         position.x += this.dx * this.speed * dt;
-        position.y += this.dx * this.speed * dt;
+        position.y += this.dy * this.speed * dt;
     }
 
     public function draw(gfx: h2d.Graphics)
