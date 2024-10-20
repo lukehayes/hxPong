@@ -26,6 +26,19 @@ class Game extends hxd.App
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
 
+        for(x in 1...2000)
+        {
+            var rx = Std.random(100);
+            var ry = Std.random(100);
+
+            xx.Global.entities.push(
+                new Ball(
+                    new Vec2(rx,ry),
+                    new Vec2(10,10),
+                    this)
+            );
+        }
+
         xx.Global.entities.push(
             new Ball(
                 new Vec2(200,200),
@@ -50,7 +63,6 @@ class Game extends hxd.App
 
         for(e in Global.entities)
         {
-            trace(e.collision);
             e.update(dt);
         }
     }
