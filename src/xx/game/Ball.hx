@@ -6,8 +6,6 @@ import xx.entity.Entity;
 
 class Ball extends Entity
 {
-    public var collision : Bounds;
-
     public function new(pos: Vec2, scale: Vec2, app: hxd.App)
     {
         super(pos, scale, app);

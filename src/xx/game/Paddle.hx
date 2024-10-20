@@ -7,8 +7,6 @@ import h2d.col.Bounds;
 class Paddle extends Entity
 {
     private var scene : h2d.Scene;
-    public var collision : Bounds;
-
 
     public function new(pos: Vec2, scale: Vec2, scene: h2d.Scene, app: hxd.App)
     {

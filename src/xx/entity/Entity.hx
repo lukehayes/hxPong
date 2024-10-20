@@ -2,6 +2,7 @@ package xx.entity;
 
 import xx.math.Vec2;
 import Random;
+import h2d.col.Bounds;
 
 class Entity
 {
@@ -13,6 +14,8 @@ class Entity
     public var speed    : Int;
     public var tile     : h2d.Tile;
     public var app      : hxd.App;
+
+    public var collision : Bounds;
 
     public function new(pos: Vec2, scale: Vec2, app: hxd.App)
     {
