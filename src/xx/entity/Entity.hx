@@ -23,7 +23,7 @@ class Entity
 
         this.position = pos;
         this.scale    = scale;
-        this.speed    = Random.int(30,200);
+        this.speed    = Random.int(30,400);
         this.tile     = h2d.Tile.fromColor(0x00FF00);
 
         this.dx = dirs[Random.int(0,1)];

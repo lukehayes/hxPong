@@ -13,6 +13,7 @@ class Game extends hxd.App
     public var entityCount = 10;
 
     public static var entities = new Array<Entity>();
+    public var paddle : Paddle;
 
     override function init() 
     {
@@ -26,7 +27,7 @@ class Game extends hxd.App
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
 
-        for(x in 1...2000)
+        for(x in 1...10)
         {
             var rx = Std.random(100);
             var ry = Std.random(100);
@@ -46,25 +47,32 @@ class Game extends hxd.App
                 this)
         );
 
-        xx.Global.entities.push(
-            new Paddle(
-                new Vec2(200,200),
-                new Vec2(10,10),
-                s2d,
-                this)
-        );
+        this.paddle = new Paddle(
+            new Vec2(200,200),
+            new Vec2(10,10),
+            s2d,
+            this);
     }
 
     override function update(dt:Float) 
     {
         #if debug
-            this.showFPS();
+        this.showFPS();
         #end
+
 
         for(e in Global.entities)
         {
+            if (this.paddle.collision.intersects(e.collision))
+            {
+                e.dx = -e.dx;
+                e.dy = -e.dy;
+            }
+
             e.update(dt);
         }
+
+        this.paddle.update(dt);
     }
 
     override function render(engine)
@@ -75,6 +83,8 @@ class Game extends hxd.App
         {
             e.draw(this.gfx);
         }
+
+        this.paddle.draw(gfx);
 
         super.render(engine);
     }
