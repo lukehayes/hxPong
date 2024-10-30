@@ -15,6 +15,8 @@ class Game extends hxd.App
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
 
+    public var buf : h3d.Buffer;
+
     override function init() 
     {
         this.gfx = new h2d.Graphics(s2d);
@@ -26,19 +28,6 @@ class Game extends hxd.App
         font.resizeTo(26);
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
-
-        for(x in 1...10)
-        {
-            var rx = Std.random(100);
-            var ry = Std.random(100);
-
-            xx.Global.entities.push(
-                new Ball(
-                    new Vec2(rx,ry),
-                    new Vec2(10,10),
-                    this)
-            );
-        }
 
         xx.Global.entities.push(
             new Ball(
@@ -56,10 +45,6 @@ class Game extends hxd.App
 
     override function update(dt:Float) 
     {
-        #if debug
-        this.showFPS();
-        #end
-
 
         for(e in Global.entities)
         {
@@ -77,7 +62,10 @@ class Game extends hxd.App
 
     override function render(engine)
     {
+
         this.gfx.clear();
+
+        this.gfx.drawRect(100,100,100,100);
 
         for(e in Global.entities)
         {
@@ -87,13 +75,15 @@ class Game extends hxd.App
         this.paddle.draw(gfx);
 
         super.render(engine);
+
     }
 
     public function showFPS()
     {
         var fps = this.engine.fps;
         var drawCalls = this.engine.drawCalls;
-        this.txt.text = 'FPS $fps. Draw Calls: $drawCalls';
+        var triangles = this.engine.drawTriangles;
+        this.txt.text = 'FPS $fps. Draw Calls: $drawCalls. Tri: $triangles';
     }
 
     static function main() {
