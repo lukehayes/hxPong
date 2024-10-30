@@ -28,11 +28,13 @@ class Paddle extends Entity
         if(this.position.x <= 1)
         {
             this.position.x = 1;
+            this.collision.x = 1;
         }
 
         if(this.position.x >= 680)
         {
             this.position.x = 680;
+            this.collision.x = 680;
         }
     }
 
