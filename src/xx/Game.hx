@@ -5,6 +5,7 @@ import xx.game.Paddle;
 import xx.entity.Entity;
 
 import xx.math.Vec2;
+import xx.GameState;
 
 class Game extends hxd.App
 {
@@ -14,8 +15,7 @@ class Game extends hxd.App
 
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
-
-    public var buf : h3d.Buffer;
+    public var gameState = GameState.PRE_PLAY;
 
     override function init() 
     {
@@ -45,6 +45,14 @@ class Game extends hxd.App
 
     override function update(dt:Float) 
     {
+        switch(this.gameState){
+            case (PRE_PLAY):
+                trace("Pre Play");
+            case (PLAYING):
+                trace("Playing");
+            case (DEAD):
+                trace("Dead");
+        }
 
         for(e in Global.entities)
         {
