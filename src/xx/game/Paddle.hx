@@ -31,10 +31,10 @@ class Paddle extends Entity
             this.collision.x = 1;
         }
 
-        if(this.position.x >= 680)
+        if(this.position.x >= app.engine.width - 10)
         {
-            this.position.x = 680;
-            this.collision.x = 680;
+            this.position.x = app.engine.width - 10;
+            this.collision.x = app.engine.width - 10;
         }
     }
 

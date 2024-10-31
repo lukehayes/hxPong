@@ -1,20 +1,12 @@
 package xx;
 
-import xx.game.Ball;
-import xx.game.Paddle;
-import xx.entity.Entity;
-
-import xx.math.Vec2;
 import xx.GameState;
 
 class Game extends hxd.App
 {
     public var gfx : h2d.Graphics;
     public var txt : h2d.Text;
-    public var entityCount = 10;
 
-    public static var entities = new Array<Entity>();
-    public var paddle : Paddle;
     public var gameState = GameState.PRE_PLAY;
 
     override function init() 
@@ -29,18 +21,6 @@ class Game extends hxd.App
         this.txt = new h2d.Text(font);
         s2d.addChild(this.txt);
 
-        xx.Global.entities.push(
-            new Ball(
-                new Vec2(200,200),
-                new Vec2(10,10),
-                this)
-        );
-
-        this.paddle = new Paddle(
-            new Vec2(200,200),
-            new Vec2(10,10),
-            s2d,
-            this);
     }
 
     override function update(dt:Float) 
@@ -48,24 +28,20 @@ class Game extends hxd.App
         switch(this.gameState){
             case (PRE_PLAY):
                 trace("Pre Play");
+                setScene(new xx.levels.StartLevel());
             case (PLAYING):
+                setScene(new xx.levels.GameLevel());
                 trace("Playing");
             case (DEAD):
                 trace("Dead");
         }
 
-        for(e in Global.entities)
-        {
-            if (this.paddle.collision.intersects(e.collision))
-            {
-                e.dx = -e.dx;
-                e.dy = -e.dy;
-            }
 
-            e.update(dt);
+        if(hxd.Key.isPressed(hxd.Key.SPACE))
+        {
+            //this.gameState = xx.GameState.PLAYING;
         }
 
-        this.paddle.update(dt);
     }
 
     override function render(engine)
@@ -80,7 +56,6 @@ class Game extends hxd.App
             e.draw(this.gfx);
         }
 
-        this.paddle.draw(gfx);
 
         super.render(engine);
 
