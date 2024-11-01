@@ -7,29 +7,31 @@ import xx.math.Vec2;
 
 class GameLevel extends h2d.Scene
 {
-    public var gfx : h2d.Graphics;
-    public var txt : h2d.Text;
+    public  var gfx  : h2d.Graphics;
+    public  var txt  : h2d.Text;
+    private var app  : hxd.App;
 
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
 
-    public function new() 
+    public function new(app: hxd.App)
     {
         super();
+        this.app = app;
         trace("New Game Level");
 
         xx.Global.entities.push(
             new Ball(
                 new Vec2(200,200),
                 new Vec2(10,10),
-                this)
+                app)
         );
 
         this.paddle = new Paddle(
             new Vec2(200,200),
             new Vec2(10,10),
-            s2d,
-            this);
+            this,
+            app);
     }
 
 
