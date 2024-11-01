@@ -14,24 +14,24 @@ class GameLevel extends h2d.Scene
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
 
-    public function new(app: hxd.App)
+    public function new(app: xx.App)
     {
         super();
         this.app = app;
         trace("New Game Level");
 
-        xx.Global.entities.push(
-            new Ball(
-                new Vec2(200,200),
-                new Vec2(10,10),
-                app)
-        );
+        //xx.Global.entities.push(
+            //new Ball(
+                //new Vec2(200,200),
+                //new Vec2(10,10),
+                //app)
+        //);
 
-        this.paddle = new Paddle(
-            new Vec2(200,200),
-            new Vec2(10,10),
-            this,
-            app);
+        //this.paddle = new Paddle(
+            //new Vec2(200,200),
+            //new Vec2(10,10),
+            //this,
+            //app);
     }
 
 

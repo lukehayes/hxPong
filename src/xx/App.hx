@@ -21,23 +21,20 @@ class App extends hxd.App
         // --------------------------------------------------------------------
         var font = hxd.res.DefaultFont.get();
         font.resizeTo(26);
-        this.txt = new h2d.Text(font);
-        s2d.addChild(this.txt);
+        this.txt = new h2d.Text(font, s2d);
 
         this.startLevel = new xx.levels.StartLevel(this);
+        this.gameLevel = new xx.levels.GameLevel(this);
     }
 
     override function update(dt:Float) 
     {
-        trace("xx.App update", dt);
-
+        trace(s2d.name);
         switch(this.gameState){
             case (PRE_PLAY):
-                trace("Pre Play");
-                setScene(this.startLevel);
-            case (PLAYING):
-                trace("Playing");
                 setScene(this.gameLevel);
+            case (PLAYING):
+                setScene(this.startLevel);
             case (DEAD):
                 trace("Dead");
         }
@@ -56,21 +53,18 @@ class App extends hxd.App
 
     override function render(engine)
     {
-        this.showFPS();
         trace("xx.App render");
         super.render(engine);
     }
 
-    public function showFPS()
+    public function showFPS(scene: h2d.Scene)
     {
         var fps = this.engine.fps;
         var drawCalls = this.engine.drawCalls;
         var triangles = this.engine.drawTriangles;
         this.txt.text = 'FPS $fps. Draw Calls: $drawCalls. Tri: $triangles';
 
-        trace(s2d);
-
-        s2d.addChild(this.txt);
+        scene.addChild(this.txt);
     }
 }
 

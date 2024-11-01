@@ -7,16 +7,6 @@ class Game extends xx.App
         super.init();
     }
 
-    override function update(dt:Float) 
-    {
-        super.update(dt);
-    }
-
-    override function render(engine)
-    {
-        super.render(engine);
-    }
-
     static function main() {
         hxd.Res.initEmbed();
         new Game();
