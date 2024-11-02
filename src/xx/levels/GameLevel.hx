@@ -9,7 +9,7 @@ class GameLevel extends h2d.Scene
 {
     public  var gfx  : h2d.Graphics;
     public  var txt  : h2d.Text;
-    private var app  : hxd.App;
+    private var app  : xx.App;
 
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
@@ -18,6 +18,9 @@ class GameLevel extends h2d.Scene
     {
         super();
         this.app = app;
+        this.app.setCurrent();
+        trace("Engine", this.app.engine);
+        trace("APP", this.app);
         trace("New Game Level");
 
         //xx.Global.entities.push(
@@ -27,14 +30,14 @@ class GameLevel extends h2d.Scene
                 //app)
         //);
 
-        //this.paddle = new Paddle(
-            //new Vec2(200,200),
-            //new Vec2(10,10),
-            //this,
-            //app);
+        this.paddle = new Paddle(
+            new Vec2(200,200),
+            new Vec2(10,10),
+            this,
+            app);
+
+        trace(this.paddle);
     }
-
-
 
     function update(dt:Float)
     {
@@ -53,8 +56,8 @@ class GameLevel extends h2d.Scene
     }
 
 
-    override public function render(engine: h3d.Engine)
-    {
-        this.paddle.draw(gfx);
-    }
+    //override public function render(engine: h3d.Engine)
+    //{
+        //this.paddle.draw(gfx);
+    //}
 }
