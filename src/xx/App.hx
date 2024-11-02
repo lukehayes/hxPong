@@ -29,12 +29,11 @@ class App extends hxd.App
 
     override function update(dt:Float) 
     {
-        trace(s2d.name);
         switch(this.gameState){
             case (PRE_PLAY):
-                setScene(this.gameLevel);
-            case (PLAYING):
                 setScene(this.startLevel);
+            case (PLAYING):
+                setScene(this.gameLevel);
             case (DEAD):
                 trace("Dead");
         }
@@ -51,11 +50,23 @@ class App extends hxd.App
         }
     }
 
-    override function render(engine)
-    {
-        trace("xx.App render");
-        super.render(engine);
-    }
+    //override function render(engine)
+    //{
+        //trace("xx.App render");
+        //super.render(engine);
+    //}
+    //override public function render(engine: h3d.Engine)
+    //{
+        //trace("Game Level Engine.render()");
+        //engine.begin();
+            //engine.clear(0x5544A7);
+
+            //gfx.drawRect(300,100,40,200);
+        //engine.end();
+        //super.render(engine);
+
+    //}
+
 
     public function showFPS(scene: h2d.Scene)
     {

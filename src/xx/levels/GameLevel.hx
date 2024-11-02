@@ -18,10 +18,7 @@ class GameLevel extends h2d.Scene
     {
         super();
         this.app = app;
-        this.app.setCurrent();
-        trace("Engine", this.app.engine);
-        trace("APP", this.app);
-        trace("New Game Level");
+        this.app.setScene(this);
 
         //xx.Global.entities.push(
             //new Ball(
@@ -32,27 +29,30 @@ class GameLevel extends h2d.Scene
 
         this.paddle = new Paddle(
             new Vec2(200,200),
-            new Vec2(10,10),
-            this,
-            app);
+            10,
+            this);
 
-        trace(this.paddle);
+        add(this.paddle);
+
     }
 
     function update(dt:Float)
     {
-        for(e in Global.entities)
-        {
-            if (this.paddle.collision.intersects(e.collision))
-            {
-                e.dx = -e.dx;
-                e.dy = -e.dy;
-            }
 
-            e.update(dt);
-        }
+        this.paddle.x += 10 * dt;
 
-        this.paddle.update(dt);
+        //for(e in Global.entities)
+        //{
+            //if (this.paddle.collision.intersects(e.collision))
+            //{
+                //e.dx = -e.dx;
+                //e.dy = -e.dy;
+            //}
+
+            //e.update(dt);
+        //}
+
+        //this.paddle.update(dt);
     }
 
 

@@ -10,7 +10,7 @@ class StartLevel extends h2d.Scene
     public var bmp : h2d.Bitmap;
 
     public function new(app : xx.App)
-    {
+   {
         super();
         this.app = app;
         this.gfx = new h2d.Graphics();
