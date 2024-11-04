@@ -19,6 +19,9 @@ class Ball extends Entity
         this.collision.x = this.position.x;
         this.collision.y = this.position.y;
 
+        //x += this.speed * dt;
+        //y += this.speed * dt;
+
     }
 
     //override public function draw(g: h2d.Graphics)

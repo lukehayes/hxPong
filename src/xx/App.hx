@@ -34,6 +34,7 @@ class App extends hxd.App
                 setScene(this.startLevel);
             case (PLAYING):
                 setScene(this.gameLevel);
+                this.gameLevel.update(dt);
             case (DEAD):
                 trace("Dead");
         }

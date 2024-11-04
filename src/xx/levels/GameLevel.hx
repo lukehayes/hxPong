@@ -13,6 +13,7 @@ class GameLevel extends h2d.Scene
 
     public static var entities = new Array<Entity>();
     public var paddle : Paddle;
+    public var ball : Ball;
 
     public function new(app: xx.App)
     {
@@ -20,12 +21,11 @@ class GameLevel extends h2d.Scene
         this.app = app;
         this.app.setScene(this);
 
-        //xx.Global.entities.push(
-            //new Ball(
-                //new Vec2(200,200),
-                //new Vec2(10,10),
-                //app)
-        //);
+        this.ball = new Ball(
+            new Vec2(200,200),
+            10,
+            this);
+        add(this.ball);
 
         this.paddle = new Paddle(
             new Vec2(200,200),
@@ -36,10 +36,12 @@ class GameLevel extends h2d.Scene
 
     }
 
-    function update(dt:Float)
+    public function update(dt:Float)
     {
 
-        this.paddle.x += 10 * dt;
+        //this.paddle.x += 100 * dt;
+
+        this.ball.update(dt);
 
         //for(e in Global.entities)
         //{
