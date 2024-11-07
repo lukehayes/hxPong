@@ -27,8 +27,8 @@ class Entity extends h2d.Bitmap
         this.scaleY = scale;
         this.speed    = Random.int(200,400);
 
-        this.dx = dirs[Random.int(0,1)];
-        this.dy = dirs[Random.int(0,1)];
+        this.dx = -1;
+        this.dy = 1;
 
         this.app = app;
     }
@@ -36,19 +36,22 @@ class Entity extends h2d.Bitmap
     public function update(dt:Float)
     {
         // TODO Movement should be velocity based.
+        //
 
-        if(this.position.x <=10 || this.position.x >= app.engine.width - 10)
-        {
-            this.dx = -this.dx;
-        }
+        //trace(dt);
 
-        if(this.position.y <=10 || this.position.y >= app.engine.height - 10)
-        {
-            this.dy = -this.dy;
-        }
+        //if(this.position.x <=10 || this.position.x >= app.engine.width - 10)
+        //{
+            //this.dx = -this.dx;
+        //}
 
-        position.x += this.dx * this.speed * dt;
-        position.y += this.dy * this.speed * dt;
+        //if(this.position.y <=10 || this.position.y >= app.engine.height - 10)
+        //{
+            //this.dy = -this.dy;
+        //}
+
+        //position.x += this.dx * this.speed * dt;
+        //position.y += this.dy * this.speed * dt;
     }
 
     //public function draw(gfx: h2d.Graphics)

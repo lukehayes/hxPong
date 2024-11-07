@@ -24,6 +24,11 @@ class StartLevel extends h2d.Scene
         //addChild(bmp);
     }
 
+    public function update(dt:Float)
+    {
+        this.bmp.x += 1;
+    }
+
     override public function render(engine: h3d.Engine)
     {
         

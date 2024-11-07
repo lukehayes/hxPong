@@ -9,18 +9,18 @@ class Ball extends Entity
     public function new(pos: Vec2, scale: Float, scene: h2d.Scene, ?app: xx.App)
     {
         super(pos, scale, scene, app);
-        this.collision = Bounds.fromValues(pos.x,pos.y,16,16);
+        //this.collision = Bounds.fromValues(pos.x,pos.y,16,16);
     }
 
     override public function update(dt: Float)
     {
         super.update(dt);
 
-        this.collision.x = this.position.x;
-        this.collision.y = this.position.y;
+        //this.collision.x = this.position.x;
+        //this.collision.y = this.position.y;
 
-        //x += this.speed * dt;
-        //y += this.speed * dt;
+        x += this.speed * dt;
+        y += this.speed * dt;
 
     }
 

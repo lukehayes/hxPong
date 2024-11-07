@@ -25,38 +25,21 @@ class GameLevel extends h2d.Scene
             new Vec2(200,200),
             10,
             this);
-        add(this.ball);
 
         this.paddle = new Paddle(
             new Vec2(200,200),
             10,
             this);
 
-        add(this.paddle);
+        //add(this.paddle);
 
     }
 
     public function update(dt:Float)
     {
-
-        //this.paddle.x += 100 * dt;
-
-        this.ball.update(dt);
-
-        //for(e in Global.entities)
-        //{
-            //if (this.paddle.collision.intersects(e.collision))
-            //{
-                //e.dx = -e.dx;
-                //e.dy = -e.dy;
-            //}
-
-            //e.update(dt);
-        //}
-
-        //this.paddle.update(dt);
+        trace("dt", dt);
+        //this.ball.update(dt);
     }
-
 
     //override public function render(engine: h3d.Engine)
     //{

@@ -11,6 +11,7 @@ class App extends hxd.App
 
     public var startLevel : xx.levels.StartLevel;
     public var gameLevel : xx.levels.GameLevel;
+    public var currentScene : h2d.Scene;
 
     override function init() 
     {
@@ -32,6 +33,7 @@ class App extends hxd.App
         switch(this.gameState){
             case (PRE_PLAY):
                 setScene(this.startLevel);
+                this.startLevel.update(dt);
             case (PLAYING):
                 setScene(this.gameLevel);
                 this.gameLevel.update(dt);
