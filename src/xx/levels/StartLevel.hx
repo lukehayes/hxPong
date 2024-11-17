@@ -12,7 +12,6 @@ class StartLevel extends h2d.Scene
     public function new(app : xx.App)
    {
         super();
-        this.app = app;
         this.gfx = new h2d.Graphics();
         trace("New Start Level");
 
@@ -26,22 +25,18 @@ class StartLevel extends h2d.Scene
 
     public function update(dt:Float)
     {
+        trace("Update!!!");
         this.bmp.x += 1;
     }
 
     override public function render(engine: h3d.Engine)
     {
-        
-
+        //trace("Start Level Engine.render()");
+        //engine.begin();
+            //engine.clear(0x0044AA);
+            //gfx.drawRect(100,100,100,100);
+        //engine.end();
         trace("Start Level Engine.render()");
-        engine.begin();
-            engine.clear(0x0044AA);
-
-            gfx.drawRect(100,100,100,100);
-        engine.end();
         super.render(engine);
-
     }
-
-
 }

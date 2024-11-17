@@ -18,8 +18,6 @@ class GameLevel extends h2d.Scene
     public function new(app: xx.App)
     {
         super();
-        this.app = app;
-        this.app.setScene(this);
 
         this.ball = new Ball(
             new Vec2(200,200),
@@ -41,8 +39,9 @@ class GameLevel extends h2d.Scene
         //this.ball.update(dt);
     }
 
-    //override public function render(engine: h3d.Engine)
-    //{
-        //this.paddle.draw(gfx);
-    //}
+    override public function render(engine: h3d.Engine)
+    {
+        trace("Game Level Engine.render()");
+        super.render(engine);
+    }
 }

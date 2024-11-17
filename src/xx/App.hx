@@ -30,13 +30,17 @@ class App extends hxd.App
 
     override function update(dt:Float) 
     {
+
+
         switch(this.gameState){
             case (PRE_PLAY):
                 setScene(this.startLevel);
                 this.startLevel.update(dt);
+                this.showFPS(this.startLevel);
             case (PLAYING):
                 setScene(this.gameLevel);
                 this.gameLevel.update(dt);
+                this.showFPS(this.gameLevel);
             case (DEAD):
                 trace("Dead");
         }
