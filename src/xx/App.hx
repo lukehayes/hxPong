@@ -30,8 +30,6 @@ class App extends hxd.App
 
     override function update(dt:Float) 
     {
-
-
         switch(this.gameState){
             case (PRE_PLAY):
                 setScene(this.startLevel);
@@ -57,22 +55,14 @@ class App extends hxd.App
         }
     }
 
-    //override function render(engine)
-    //{
-        //trace("xx.App render");
-        //super.render(engine);
-    //}
-    //override public function render(engine: h3d.Engine)
-    //{
-        //trace("Game Level Engine.render()");
-        //engine.begin();
-            //engine.clear(0x5544A7);
-
-            //gfx.drawRect(300,100,40,200);
-        //engine.end();
-        //super.render(engine);
-
-    //}
+    /**
+     * This method is called first and seems to call 
+     * Object.draw() internally.
+     */
+    override public function render(engine: h3d.Engine)
+    {
+        super.render(engine);
+    }
 
 
     public function showFPS(scene: h2d.Scene)

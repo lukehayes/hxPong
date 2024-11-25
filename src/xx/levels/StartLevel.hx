@@ -9,58 +9,43 @@ class StartLevel extends h2d.Scene
     public var bmp : h2d.Bitmap;
 
     public var c : Float;
+    public var s1 : xx.entity.Sprite;
 
     public function new(app : xx.App)
-   {
+    {
         super();
         this.gfx = new h2d.Graphics(this);
-        trace("New Start Level");
 
-        this.tile = h2d.Tile.fromColor(0x666666, 100, 100);
-        this.bmp = new h2d.Bitmap(this.tile, this);
-        bmp.x = 300;
-        bmp.y = 300;
-        bmp.rotation = 90;
-        //addChild(bmp);
+        this.tile = hxd.Res.debug.toTile();
+        this.bmp = new h2d.Bitmap(tile,this);
+
     }
 
     public function update(dt:Float)
     {
         this.c += 0.1;
+        //bmp.x += Math.sin(c) * 10.0;
         //this.bmp.x += Math.sin(this.c) * 10;
         //this.bmp.y += Math.cos(this.c);
         //this.bmp.rotation += Math.cos(this.c) / 10.0;
 
-        trace(this.renderer, dt, this.c);
     }
 
-    override public function render(engine: h3d.Engine)
+    override public function draw(ctx: h2d.RenderContext)
     {
-        trace("Render Start Level");
-        //trace("Start Level Engine.render()");
-        engine.begin();
-            engine.clear(0xAAAAAA);
+        ctx.clear(0xAAAAAA);
+        this.gfx.beginFill(0x000FF);
+        this.gfx.drawRect(200 + Math.sin(c) * 100.0, 200 + Math.cos(c) * 100.0,100,100);
+        this.gfx.drawTile(200 + Math.cos(c) * 100.0, 200 + Math.sin(c) * 100.0, tile);
+        this.gfx.endFill();
 
-            //this.renderer.drawTile(bmp,tile);
+        this.gfx.beginFill(0x55555);
+        this.gfx.drawRect(200 + Math.sin(c) * 100.0, 200 + Math.cos(c) * 100.0,100,100);
+        this.gfx.drawTile(200 + Math.cos(c) * 100.0, 200 + Math.sin(c) * 100.0, tile);
+        this.gfx.endFill();
 
-            gfx.beginFill(0x444444);
-            //gfx.drawRect(400,100,100,100);
-            gfx.endFill();
-
-            gfx.beginFill(0x222222);
-            gfx.drawCircle(300,300, Math.sin(c) * 60);
-            gfx.endFill();
-
-            //gfx.beginTileFill(0,0,20,20, this.tile);
-            gfx.drawTile(20,20, tile);
-
-            //gfx.beginFill(0x00FF00);
-            //gfx.drawRect(100,100,100,100);
-            //gfx.endFill();
-        engine.end();
-
-        super.render(engine);
-
-        //trace("Start Level Engine.render()");
+        //super.draw(ctx);
+        //ctx.begin();
+        //ctx.end();
     }
 }
