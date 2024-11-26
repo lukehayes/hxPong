@@ -11,6 +11,7 @@ class App extends hxd.App
 
     public var startLevel : xx.levels.StartLevel;
     public var gameLevel : xx.levels.GameLevel;
+    public var deadLevel : xx.levels.DeadLevel;
     public var currentScene : h2d.Scene;
 
     override function init() 
@@ -26,6 +27,7 @@ class App extends hxd.App
 
         this.startLevel = new xx.levels.StartLevel(this);
         this.gameLevel = new xx.levels.GameLevel(this);
+        this.deadLevel = new xx.levels.DeadLevel(this);
     }
 
     override function update(dt:Float) 
@@ -40,7 +42,7 @@ class App extends hxd.App
                 this.gameLevel.update(dt);
                 this.showFPS(this.gameLevel);
             case (DEAD):
-                trace("Dead");
+                setScene(this.deadLevel);
         }
 
         if(hxd.Key.isPressed(hxd.Key.SPACE))
@@ -52,6 +54,11 @@ class App extends hxd.App
         if(hxd.Key.isPressed(hxd.Key.F))
         {
             this.gameState = xx.GameState.PRE_PLAY;
+        }
+
+        if(hxd.Key.isPressed(hxd.Key.D))
+        {
+            this.gameState = xx.GameState.DEAD;
         }
     }
 
