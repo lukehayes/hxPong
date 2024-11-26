@@ -1,29 +1,31 @@
 package xx.entity;
 
-// Wrapper class for h2d.Bitmap - DOES NOT inherit from Entity.
-class Sprite extends h2d.Bitmap implements h3d.IDrawable
-{
-    private var context: h2d.RenderContext;
+import Random;
 
-    public function new(x,y, scale)
+// Wrapper class for h2d.Bitmap - DOES NOT inherit from Entity.
+// This class is basically an entity.
+class Sprite extends h2d.Bitmap
+{
+    private var dx : Int;
+    private var dy : Int;
+    private var speed : Float;
+
+    public function new(tile: h2d.Tile, x,y, scale = 2, ?parent: h2d.Object)
     {
-        super(h2d.Tile.fromColor(0xFFFF00, scale,scale));
+        super(tile, parent);
         this.x = x;
         this.y = y;
+        this.scaleX = scale;
+        this.scaleY = scale;
+
+        this.speed = Random.int(40,120);
+        this.dx = Random.int(-1,1);
+        this.dy = Random.int(-1,1);
     }
 
     public function update(dt:Float)
     {
-        trace("Updating Sprite");
-    }
-
-    override public function draw(ctx: h2d.RenderContext)
-    {
-        super.emitTile(ctx, tile);
-    }
-    
-    public function render(engine: h3d.Engine)
-    {
-        trace("Rendering");
+        this.x += this.dx * this.speed * dt;
+        this.y += this.dy * this.speed * dt;
     }
 }
