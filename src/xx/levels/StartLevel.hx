@@ -25,6 +25,11 @@ class StartLevel extends h2d.Scene
 
     override public function draw(ctx: h2d.RenderContext)
     {
+        try {
+            throw new haxe.Exception("Draw method should not be used yet!");
+        } catch (error) {
+            trace(error);
+        }
         ctx.clear(0xAAAAAA);
         this.gfx.beginFill(0x000FF);
         this.gfx.drawRect(200 + Math.sin(c) * 100.0, 200 + Math.cos(c) * 100.0,100,100);
